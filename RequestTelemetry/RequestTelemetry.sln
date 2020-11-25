@@ -3,7 +3,25 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30621.155
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RequestTelemetry.Data", "RequestTelemetry.Data\RequestTelemetry.Data.csproj", "{760423F9-CCC3-4911-A15E-F393969CB4DF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RequestTelemetry.WebApi", "RequestTelemetry.WebApi\RequestTelemetry.WebApi.csproj", "{39767DEB-B185-468E-A7C9-76B77D909BD5}"
+EndProject
 Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{760423F9-CCC3-4911-A15E-F393969CB4DF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{760423F9-CCC3-4911-A15E-F393969CB4DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{760423F9-CCC3-4911-A15E-F393969CB4DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{760423F9-CCC3-4911-A15E-F393969CB4DF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{39767DEB-B185-468E-A7C9-76B77D909BD5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{39767DEB-B185-468E-A7C9-76B77D909BD5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{39767DEB-B185-468E-A7C9-76B77D909BD5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{39767DEB-B185-468E-A7C9-76B77D909BD5}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
