@@ -11,7 +11,7 @@ namespace RequestTelemetry.Domain.Services {
         private readonly IMapper _mapper;
         private readonly TelemetryContext _context;
 
-        public FetchService(TelemetryContext context, IWebRequester webRequester, IMapper mapper) {
+        public FetchService(TelemetryContext context, IMapper mapper) {
             _context = context;
             _mapper = mapper;
         }
