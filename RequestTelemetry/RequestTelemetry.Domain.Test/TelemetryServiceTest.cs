@@ -13,7 +13,7 @@ namespace RequestTelemetry.Domain.Test {
             RequestDTO request = await service.MeasureRequestAsync("Dummy");
 
             request.Url.ShouldBe("Dummy");
-            request.Response.ShouldBeInRange(new TimeSpan(0, 0, 2), new TimeSpan(0, 0, 3));
+            request.ResponseTime.ShouldBeInRange(new TimeSpan(0, 0, 2), new TimeSpan(0, 0, 3));
             request.StatusCode.ShouldBe(System.Net.HttpStatusCode.OK);
         }
     }

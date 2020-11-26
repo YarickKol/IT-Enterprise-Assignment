@@ -21,7 +21,7 @@ namespace RequestTelemetry.Domain {
             stopwatch.Stop();
 
             request.SentAt = sentAt;
-            request.Response = new TimeSpan(stopwatch.ElapsedTicks);
+            request.ResponseTime = new TimeSpan(stopwatch.ElapsedTicks);
             request.StatusCode = webResponse.StatusCode;
             return request;
         }

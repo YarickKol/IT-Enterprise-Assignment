@@ -20,14 +20,14 @@ namespace RequestTelemetry.Domain.Test {
             var requestDTO = new RequestDTO {
                 Id = 1,
                 Url = "Dummy",
-                Response = new TimeSpan(1, 2, 3),
+                ResponseTime = new TimeSpan(1, 2, 3),
                 SentAt = new DateTime(1, 2, 3, 4, 5, 6),
                 StatusCode = HttpStatusCode.OK
             };
             var extected = new Request {
                 Id = 1,
                 Url = "Dummy",
-                Response = new TimeSpan(1, 2, 3),
+                ResponseTime = new TimeSpan(1, 2, 3),
                 SentAt = new DateTime(1, 2, 3, 4, 5, 6),
                 StatusCode = "OK"
             };
@@ -36,7 +36,7 @@ namespace RequestTelemetry.Domain.Test {
 
             extected.Id.ShouldBe(actulal.Id);
             extected.Url.ShouldBe(actulal.Url);
-            extected.Response.ShouldBe(actulal.Response);
+            extected.ResponseTime.ShouldBe(actulal.ResponseTime);
             extected.SentAt.ShouldBe(actulal.SentAt);
             extected.StatusCode.ShouldBe(actulal.StatusCode);
         }
@@ -46,14 +46,14 @@ namespace RequestTelemetry.Domain.Test {
             var request = new Request {
                 Id = 1,
                 Url = "Dummy",
-                Response = new TimeSpan(1, 2, 3),
+                ResponseTime = new TimeSpan(1, 2, 3),
                 SentAt = new DateTime(1, 2, 3, 4, 5, 6),
                 StatusCode = "OK"
             };
             var extected = new RequestDTO {
                 Id = 1,
                 Url = "Dummy",
-                Response = new TimeSpan(1, 2, 3),
+                ResponseTime = new TimeSpan(1, 2, 3),
                 SentAt = new DateTime(1, 2, 3, 4, 5, 6),
                 StatusCode = HttpStatusCode.OK
             };
@@ -62,7 +62,7 @@ namespace RequestTelemetry.Domain.Test {
 
             extected.Id.ShouldBe(actulal.Id);
             extected.Url.ShouldBe(actulal.Url);
-            extected.Response.ShouldBe(actulal.Response);
+            extected.ResponseTime.ShouldBe(actulal.ResponseTime);
             extected.SentAt.ShouldBe(actulal.SentAt);
             extected.StatusCode.ShouldBe(actulal.StatusCode);
         }

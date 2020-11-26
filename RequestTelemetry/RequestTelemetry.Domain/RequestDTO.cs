@@ -7,6 +7,6 @@ namespace RequestTelemetry.Domain {
         public string Url { get; set; }
         public HttpStatusCode StatusCode { get; set; }
         public DateTime SentAt { get; set; }
-        public TimeSpan Response { get; set; }
+        public TimeSpan ResponseTime { get; set; }
     }
 }
