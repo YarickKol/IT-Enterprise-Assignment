@@ -1,9 +1,10 @@
 ﻿using AutoMapper;
 using RequestTelemetry.Data;
+using RequestTelemetry.Domain.DTO;
 using System;
 using System.Net;
 
-namespace RequestTelemetry.Domain {
+namespace RequestTelemetry.Domain.AutoMapper {
     public class RequestProfile : Profile {
         public RequestProfile() {
             CreateMap<RequestDTO, Request>().ForMember(

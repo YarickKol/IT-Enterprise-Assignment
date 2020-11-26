@@ -1,4 +1,6 @@
 using NUnit.Framework;
+using RequestTelemetry.Domain.DTO;
+using RequestTelemetry.Domain.Services;
 using Shouldly;
 using System;
 using System.Threading.Tasks;

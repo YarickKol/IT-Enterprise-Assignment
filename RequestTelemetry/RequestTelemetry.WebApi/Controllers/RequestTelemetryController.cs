@@ -1,13 +1,6 @@
-﻿using AutoMapper;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using RequestTelemetry.Data;
-using RequestTelemetry.Domain;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading;
+﻿using Microsoft.AspNetCore.Mvc;
+using RequestTelemetry.Domain.DTO;
+using RequestTelemetry.Domain.Services;
 using System.Threading.Tasks;
 
 namespace RequestTelemetry.WebApi.Controllers {

@@ -1,7 +1,7 @@
 ﻿using System.Net;
 using System.Threading.Tasks;
 
-namespace RequestTelemetry.Domain {
+namespace RequestTelemetry.Domain.Services {
     public class WebRequester : IWebRequester {
         private WebRequest _webRequest;
 

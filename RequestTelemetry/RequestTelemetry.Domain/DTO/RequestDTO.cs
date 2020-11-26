@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Net;
 
-namespace RequestTelemetry.Domain {
+namespace RequestTelemetry.Domain.DTO {
     public class RequestDTO {
         public int Id { get; set; }
         public string Url { get; set; }

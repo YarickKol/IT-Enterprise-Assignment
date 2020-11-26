@@ -1,6 +1,8 @@
 ﻿using AutoMapper;
 using NUnit.Framework;
 using RequestTelemetry.Data;
+using RequestTelemetry.Domain.AutoMapper;
+using RequestTelemetry.Domain.DTO;
 using Shouldly;
 using System;
 using System.Net;

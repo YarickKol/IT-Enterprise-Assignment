@@ -7,6 +7,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using RequestTelemetry.Data;
 using RequestTelemetry.Domain;
+using RequestTelemetry.Domain.AutoMapper;
+using RequestTelemetry.Domain.Services;
 using System.Reflection;
 
 namespace RequestTelemetry.WebApi {

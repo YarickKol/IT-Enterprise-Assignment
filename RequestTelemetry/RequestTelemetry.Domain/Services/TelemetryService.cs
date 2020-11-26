@@ -1,8 +1,9 @@
-﻿using System;
+﻿using RequestTelemetry.Domain.DTO;
+using System;
 using System.Diagnostics;
 using System.Threading.Tasks;
 
-namespace RequestTelemetry.Domain {
+namespace RequestTelemetry.Domain.Services {
     public class TelemetryService {
         private readonly IWebRequester _webRequester;
 

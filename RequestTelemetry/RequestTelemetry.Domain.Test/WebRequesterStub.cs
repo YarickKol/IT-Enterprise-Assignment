@@ -1,5 +1,5 @@
 ﻿using Moq;
-using System;
+using RequestTelemetry.Domain.Services;
 using System.Net;
 using System.Threading.Tasks;
 
