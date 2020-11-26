@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using RequestTelemetry.Data;
+using System.Threading.Tasks;
 
 namespace RequestTelemetry.Domain {
     public class RateService {
@@ -13,8 +14,8 @@ namespace RequestTelemetry.Domain {
             _telemetryService = new TelemetryService(new WebRequester());
         }
 
-        public void SimpleCall(string url) {
-            RequestDTO requestDTO = _telemetryService.MeasureRequest(url);
+        public async Task SimpleCall(string url) {
+            RequestDTO requestDTO = await _telemetryService.MeasureRequestAsync(url);
             Request request = _mapper.Map<Request>(requestDTO);
 
             _context.Add(request);

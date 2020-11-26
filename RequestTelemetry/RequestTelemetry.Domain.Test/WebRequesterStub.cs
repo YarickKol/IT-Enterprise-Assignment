@@ -1,7 +1,7 @@
 ﻿using Moq;
 using System;
 using System.Net;
-using System.Threading;
+using System.Threading.Tasks;
 
 namespace RequestTelemetry.Domain.Test {
     public class WebRequesterStub : IWebRequester {
@@ -12,17 +12,17 @@ namespace RequestTelemetry.Domain.Test {
         }
 
         public void CreateInstance(string url) {
-            throw new NotImplementedException();
+
         }
 
         public void CreateInstance(string url, int timeout) {
-            throw new NotImplementedException();
+
         }
 
-        public HttpWebResponse GetResponse() {
+        public async Task<HttpWebResponse> GetResponseAsync() {
             var httpWebResponse = new Mock<HttpWebResponse>();
             httpWebResponse.Setup(x => x.StatusCode).Returns(HttpStatusCode.OK);
-            Thread.Sleep(_millisecondsTimeout);
+            await Task.Delay(_millisecondsTimeout);
             return httpWebResponse.Object;
         }
     }

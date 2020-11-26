@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Threading.Tasks;
 
 namespace RequestTelemetry.Domain {
     public class TelemetryService {
@@ -9,14 +10,14 @@ namespace RequestTelemetry.Domain {
             _webRequester = webRequester;
         }
 
-        public RequestDTO MeasureRequest(string url) {
+        public async Task<RequestDTO> MeasureRequestAsync(string url) {
             var stopwatch = new Stopwatch();
             var request = new RequestDTO { Url = url };
             var sentAt = DateTime.Now;
             _webRequester.CreateInstance(url);
 
             stopwatch.Start();
-            var webResponse = _webRequester.GetResponse();
+            var webResponse = await _webRequester.GetResponseAsync();
             stopwatch.Stop();
 
             request.SentAt = sentAt;

@@ -1,4 +1,5 @@
 ﻿using System.Net;
+using System.Threading.Tasks;
 
 namespace RequestTelemetry.Domain {
     public class WebRequester : IWebRequester {
@@ -14,8 +15,8 @@ namespace RequestTelemetry.Domain {
             _webRequest.Timeout = timeout;
         }
 
-        public HttpWebResponse GetResponse() {
-            return _webRequest.GetResponse() as HttpWebResponse;
+        public async Task<HttpWebResponse> GetResponseAsync() {
+            return await _webRequest.GetResponseAsync() as HttpWebResponse;
         }
     }
 }
