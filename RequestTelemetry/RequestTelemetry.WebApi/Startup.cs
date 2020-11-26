@@ -1,4 +1,5 @@
 using AutoMapper;
+using Hangfire;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -24,6 +25,7 @@ namespace RequestTelemetry.WebApi {
             services.AddScoped<RateService>();
             services.AddScoped<IWebRequester, WebRequester>();
             services.AddAutoMapper(AutoMapperDomainConfiguration.Configuration(), Assembly.GetExecutingAssembly());
+            services.AddHangfire(options => options.UseSqlServerStorage(Configuration.GetConnectionString("RequestTelemetryDbConnection")));
             services.AddControllers();
         }
 
@@ -36,6 +38,8 @@ namespace RequestTelemetry.WebApi {
             app.UseRouting();
 
             app.UseAuthorization();
+
+            app.UseHangfireServer();
 
             app.UseEndpoints(endpoints => {
                 endpoints.MapControllers();

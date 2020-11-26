@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Hangfire;
+using Microsoft.AspNetCore.Mvc;
 using RequestTelemetry.Domain.Services;
 using RequestTelemetry.WebApi.Model;
 using System.Threading.Tasks;
@@ -17,7 +18,7 @@ namespace RequestTelemetry.WebApi.Controllers {
             if (inputParams.Frequency == 0) {
                 await _service.MeasureRequestAsync(inputParams.Url);
             } else {
-                await _service.StartMeasurementLoop(inputParams.Url, inputParams.Frequency);
+                BackgroundJob.Enqueue(() => _service.StartMeasurementLoop(inputParams.Url, inputParams.Frequency));
             }
             return Ok();
         }
