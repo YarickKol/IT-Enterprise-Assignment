@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using RequestTelemetry.Domain.DTO;
 using RequestTelemetry.Domain.Services;
+using RequestTelemetry.WebApi.Model;
 using System.Threading.Tasks;
 
 namespace RequestTelemetry.WebApi.Controllers {
@@ -13,8 +13,12 @@ namespace RequestTelemetry.WebApi.Controllers {
         }
 
         [HttpPost]
-        public async Task<IActionResult> StartMeasurement(string url/*, int milliseconds*/) {
-            _service.SimpleCall(url);
+        public async Task<IActionResult> StartMeasurement([FromBody] InputParams inputParams) {
+            if (inputParams.Frequency == 0) {
+                await _service.MeasureRequestAsync(inputParams.Url);
+            } else {
+                await _service.StartMeasurementLoop(inputParams.Url, inputParams.Frequency);
+            }
             return Ok();
         }
     }

@@ -6,7 +6,6 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using RequestTelemetry.Data;
-using RequestTelemetry.Domain;
 using RequestTelemetry.Domain.AutoMapper;
 using RequestTelemetry.Domain.Services;
 using System.Reflection;
@@ -23,6 +22,7 @@ namespace RequestTelemetry.WebApi {
         public void ConfigureServices(IServiceCollection services) {
             services.AddDbContext<TelemetryContext>(options => options.UseSqlServer(Configuration.GetConnectionString("RequestTelemetryDbConnection")));
             services.AddScoped<RateService>();
+            services.AddScoped<IWebRequester, WebRequester>();
             services.AddAutoMapper(AutoMapperDomainConfiguration.Configuration(), Assembly.GetExecutingAssembly());
             services.AddControllers();
         }

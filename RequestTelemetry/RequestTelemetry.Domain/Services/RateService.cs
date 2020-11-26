@@ -9,10 +9,17 @@ namespace RequestTelemetry.Domain.Services {
         private readonly TelemetryContext _context;
         private readonly TelemetryService _telemetryService;
 
-        public RateService(TelemetryContext context, IMapper mapper) {
+        public RateService(TelemetryContext context, IWebRequester webRequester, IMapper mapper) {
             _context = context;
             _mapper = mapper;
-            _telemetryService = new TelemetryService(new WebRequester());
+            _telemetryService = new TelemetryService(webRequester);
+        }
+
+        public async Task StartMeasurementLoop(string url, int frequency) {
+            while (true) {
+                await MeasureRequestAsync(url);
+                await Task.Delay(frequency);
+            }
         }
 
         public async Task<RequestDTO> MeasureRequestAsync(string url) {
