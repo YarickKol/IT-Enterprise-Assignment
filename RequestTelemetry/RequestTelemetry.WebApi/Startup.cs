@@ -23,6 +23,7 @@ namespace RequestTelemetry.WebApi {
         public void ConfigureServices(IServiceCollection services) {
             services.AddDbContext<TelemetryContext>(options => options.UseSqlServer(Configuration.GetConnectionString("RequestTelemetryDbConnection")));
             services.AddScoped<RateService>();
+            services.AddScoped<FetchService>();
             services.AddScoped<IWebRequester, WebRequester>();
             services.AddAutoMapper(AutoMapperDomainConfiguration.Configuration(), Assembly.GetExecutingAssembly());
             services.AddHangfire(options => options.UseSqlServerStorage(Configuration.GetConnectionString("RequestTelemetryDbConnection")));
