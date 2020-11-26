@@ -1,3 +1,5 @@
+using AutoMapper;
+using Hangfire;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -5,6 +7,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using RequestTelemetry.Data;
+using RequestTelemetry.Domain.AutoMapper;
+using RequestTelemetry.Domain.Services;
+using System.Reflection;
 
 namespace RequestTelemetry.WebApi {
     public class Startup {
@@ -17,6 +22,11 @@ namespace RequestTelemetry.WebApi {
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services) {
             services.AddDbContext<TelemetryContext>(options => options.UseSqlServer(Configuration.GetConnectionString("RequestTelemetryDbConnection")));
+            services.AddScoped<RateService>();
+            services.AddScoped<FetchService>();
+            services.AddScoped<IWebRequester, WebRequester>();
+            services.AddAutoMapper(AutoMapperDomainConfiguration.Configuration(), Assembly.GetExecutingAssembly());
+            services.AddHangfire(options => options.UseSqlServerStorage(Configuration.GetConnectionString("RequestTelemetryDbConnection")));
             services.AddControllers();
         }
 
@@ -29,6 +39,8 @@ namespace RequestTelemetry.WebApi {
             app.UseRouting();
 
             app.UseAuthorization();
+
+            app.UseHangfireServer();
 
             app.UseEndpoints(endpoints => {
                 endpoints.MapControllers();
